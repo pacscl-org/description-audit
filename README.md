@@ -44,6 +44,7 @@ Not a developer? Just want to use the program as it currently exists and see if 
 #### Screenshot of program interface ![Screenshot of Program GUI](description_audit_GUI_screenshot.jpg? "Screenshot of GUI")
 
 ### Option 2: Clone the Repository:
+#### Run with Python
 This requires you to have git, a GitHub account, Python 3.8, and some kind of package or environment manager (e.g. pip, homebrew, conda).
 First, fork the repository so any changes you make don't impact the main version or anyone else's changes. Then, copy the project fork's SSH key or HTTPS key (depending on your git configuration), navigate via command line to the directory where you want this repository to be stored on your computer, and clone the repository using the key.
 
@@ -58,6 +59,16 @@ Once all dependencies are installed, the main audit search program can be run wi
     python ./description_audit.py
 This command will launch the program with the GUI active. To input your setup parameters (such as file paths) from the command line, use the flag --nogui and refer to description_audit_driver.py function in the scripts folder to see the contents and parameters of the command line parser if needed.
 About 10 minutes after the parameters are given, the process should be completed, with matches to the given lexicons stored in the chosen folder as CSV files.
+
+#### Run with Docker
+*NOTE: the GUI cannot be launched with this method.*
+
+This requires you to have git, a GitHub account, and Docker.
+First, fork and clone the repository as described in the previous section. Once your forked version of the repository is cloned to your local environment, run the following command to launch a Docker container with access to a console with all dependencies installed:
+
+    C:\> docker compose run app
+
+From this console, you can launch the program as usual. Source files should be placed in `source_data`, lexicons should be places in `lexicons`, and reports should be generated to `reports`. This will ensure artifacts are preserved once the Docker container is stopped.
 
 ## Contributions
 Suggestions and contributions are welcome! In particular, we are looking for someone who is able to create executables for a wider variety of operating systems. Even if you run the script from the command line, if you have a non-Windows OS, please consider using your programming skills and the instructions in create_executable_instructions.txt in the repository main folder to create an executable version to help other users with your operating system.

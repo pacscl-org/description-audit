@@ -1,0 +1,17 @@
+services:
+  app:
+    container_name: audit_app
+    image: description-audit
+    volumes:
+      - ./lexicons:/usr/src/app/lexicons
+      - ./reports:/usr/src/app/reports
+      - ./source_data:/usr/src/app/source_data
+    build:
+      context: .
+      dockerfile: Dockerfile
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "10"
+    entrypoint: bash
