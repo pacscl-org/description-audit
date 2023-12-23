@@ -86,9 +86,9 @@ def ead_entry_parser(entry):
     :return: entry_data (dictionary): Keyed dictionary containing pertinent information about EAD entry for NLP analysis
     """
     # Get collection info
-    eadid = entry.eadid.text
+    eadid = entry.eadid.text if entry.eadid is not None else "EADID not found"
     print(eadid)
-    collection_title = entry.archdesc.did.unittitle.text  # might need to remove tabs, newlines
+    collection_title = entry.archdesc.did.unittitle.text if entry.archdesc is not None and entry.archdesc.did is not None else "Collection title not found"  # might need to remove tabs, newlines
     collection_title = collection_title.split()
     clean_collection_title = ' '.join(collection_title).replace('\\n', '').replace('\\', '')
 
